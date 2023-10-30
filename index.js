@@ -1,9 +1,13 @@
 //서버구현
 const express = require('express');
 const app = express();
+const path = require('path');
 
-app.use((req, res) => {
-    res.send('<h1>I GOT YOUR RESPONSE!!!<h1>');
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+
+app.get('/', (req, res) => {
+    res.render('home.ejs');
 });
 
 app.listen(3000, () => {
